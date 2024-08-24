@@ -2,7 +2,7 @@ from http import HTTPStatus
 
 from fastapi import FastAPI
 
-from fast_zero.routers import users
+from fast_zero.routers import clientes, users
 from fast_zero.schemas import Message
 
 app = FastAPI()
@@ -12,6 +12,7 @@ app = FastAPI()
 # task run
 
 app.include_router(users.router)
+app.include_router(clientes.router)
 
 
 @app.get('/', status_code=HTTPStatus.OK, response_model=Message)

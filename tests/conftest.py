@@ -1,3 +1,5 @@
+from datetime import date
+
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
@@ -6,7 +8,7 @@ from sqlalchemy.pool import StaticPool
 
 from fast_zero.app import app
 from fast_zero.database import get_session
-from fast_zero.models import User, table_registry
+from fast_zero.models import Cliente, User, table_registry
 
 # princípio DRY (Don't Repeat Yourself)
 
@@ -46,3 +48,18 @@ def user(session):
     session.refresh(user)
 
     return user
+
+
+@pytest.fixture()
+def um_cliente(session):
+    cliente = Cliente(
+        nome='Teste',
+        cpf='11111111111',
+        data_nasc=date(1999, 12, 31),
+        email='teste@test.com',
+    )
+    session.add(cliente)
+    session.commit()
+    session.refresh(cliente)
+
+    return cliente
