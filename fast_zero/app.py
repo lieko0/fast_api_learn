@@ -2,7 +2,7 @@ from http import HTTPStatus
 
 from fastapi import FastAPI
 
-from fast_zero.routers import clientes, users
+from fast_zero.routers import clientes
 from fast_zero.schemas import Message
 
 app = FastAPI()
@@ -11,7 +11,11 @@ app = FastAPI()
 # poetry shell
 # task run
 
-app.include_router(users.router)
+# alembic init migrations
+# ~change migrations/env.py if first time~
+# alembic revision --autogenerate -m "create cliente table"
+# alembic upgrade head
+
 app.include_router(clientes.router)
 
 

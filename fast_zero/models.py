@@ -10,6 +10,7 @@ table_registry = registry()
 #  Data de nascimento;
 #  E-mail.
 
+
 @table_registry.mapped_as_dataclass
 class Cliente:
     __tablename__ = 'clientes'
@@ -19,22 +20,6 @@ class Cliente:
     cpf: Mapped[str] = mapped_column(unique=True)
     data_nasc: Mapped[date]
     email: Mapped[str] = mapped_column(unique=True)
-    update_at: Mapped[datetime] = mapped_column(
-        init=False, server_default=None, nullable=True, onupdate=func.now()
-    )
-
-
-@table_registry.mapped_as_dataclass
-class User:
-    __tablename__ = 'users'
-
-    id: Mapped[int] = mapped_column(init=False, primary_key=True)
-    username: Mapped[str] = mapped_column(unique=True)
-    password: Mapped[str]
-    email: Mapped[str] = mapped_column(unique=True)
-    created_at: Mapped[datetime] = mapped_column(
-        init=False, server_default=func.now()
-    )
     update_at: Mapped[datetime] = mapped_column(
         init=False, server_default=None, nullable=True, onupdate=func.now()
     )

@@ -146,9 +146,7 @@ def test_update_cliente_not_found(client):
 
 
 def test_delete_cliente(client, um_cliente):
-    response = client.delete(
-        '/clientes/1'
-    )
+    response = client.delete('/clientes/1')
     assert response.status_code == HTTPStatus.OK
     assert response.json() == {
         'message': 'Client deleted',
@@ -156,9 +154,7 @@ def test_delete_cliente(client, um_cliente):
 
 
 def test_delete_cliente_not_found(client):
-    response = client.delete(
-        '/clientes/1'
-    )
+    response = client.delete('/clientes/1')
     assert response.status_code == HTTPStatus.NOT_FOUND
     assert response.json() == {
         'detail': 'Client not found',

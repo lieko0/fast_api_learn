@@ -24,9 +24,7 @@ router = APIRouter(prefix='/clientes', tags=['clientes'])
 
 
 @router.post('/', status_code=HTTPStatus.CREATED, response_model=ClientePublic)
-def create_cliente(
-    session: Session, cliente: ClienteSchema
-):
+def create_cliente(session: Session, cliente: ClienteSchema):
     db_cliente = session.scalar(
         select(Cliente).where(
             (Cliente.cpf == cliente.cpf) | (Cliente.email == cliente.email)
@@ -59,17 +57,13 @@ def create_cliente(
 
 
 @router.get('/', response_model=ClienteList)
-def read_clientes(
-    session: Session, skip: int = 0, limit: int = 100
-):
+def read_clientes(session: Session, skip: int = 0, limit: int = 100):
     clientes = session.scalars(select(Cliente).offset(skip).limit(limit)).all()
     return {'clientes': clientes}
 
 
 @router.get('/{cliente_id}', response_model=ClientePublic)
-def read_cliente_by_id(
-    cliente_id: int, session: Session
-):
+def read_cliente_by_id(cliente_id: int, session: Session):
     db_cliente = session.scalar(
         select(Cliente).where(Cliente.id == cliente_id)
     )
@@ -82,12 +76,8 @@ def read_cliente_by_id(
 
 
 @router.get('/cpf/', response_model=ClientePublic)
-def read_cliente_by_cpf(
-    cpf: str, session: Session
-):
-    db_cliente = session.scalar(
-        select(Cliente).where(Cliente.cpf == cpf)
-    )
+def read_cliente_by_cpf(cpf: str, session: Session):
+    db_cliente = session.scalar(select(Cliente).where(Cliente.cpf == cpf))
     if not db_cliente:
         raise HTTPException(
             status_code=HTTPStatus.NOT_FOUND, detail='Client not found'
@@ -97,11 +87,7 @@ def read_cliente_by_cpf(
 
 
 @router.put('/{cliente_id}', response_model=ClientePublic)
-def update_cliente(
-    cliente_id: int,
-    cliente: ClienteSchema,
-    session: Session
-):
+def update_cliente(cliente_id: int, cliente: ClienteSchema, session: Session):
     db_cliente = session.scalar(
         select(Cliente).where(Cliente.id == cliente_id)
     )

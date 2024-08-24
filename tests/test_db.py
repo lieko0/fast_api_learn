@@ -2,17 +2,7 @@ from datetime import date
 
 from sqlalchemy import select
 
-from fast_zero.models import Cliente, User
-
-
-def test_create_user(session):
-    new_user = User(username='alice', password='secret', email='teste@test')
-    session.add(new_user)
-    session.commit()
-
-    user = session.scalar(select(User).where(User.username == 'alice'))
-
-    assert user.username == 'alice'
+from fast_zero.models import Cliente
 
 
 def test_create_cliente(session):
