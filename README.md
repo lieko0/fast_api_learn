@@ -2,13 +2,35 @@
 
 Learning from [FastAPI do Zero by Dunossauro](https://fastapidozero.dunossauro.com/)
 
-## Comandos
+## Comandos para rodar
+
+- Docker compose
+
+``` shell
+    docker-compose up --build
+```
+
+- Documentação da API
+  
+http://127.0.0.1:8000/docs/
+
+
+
+## Comandos para o desenvolvimento
 
 - Ambiente virtual
 
 ``` shell
     poetry shell
 ```
+
+
+- Database
+
+``` shell
+    docker-compose up -d fastzero_database
+```
+
 
 - Atalhos
 
@@ -27,4 +49,3 @@ task post_test #= 'coverage html'
 ```
 
 
-docker run -d --name app_database -e POSTGRES_USER=app_user -e POSTGRES_DB=app_db -e POSTGRES_PASSWORD=app_password -v pgdata:/var/lib/postgresql/data -p 5432:5432 postgres
