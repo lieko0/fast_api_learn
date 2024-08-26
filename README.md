@@ -2,6 +2,9 @@
 
 Learning from [FastAPI do Zero by Dunossauro](https://fastapidozero.dunossauro.com/)
 
+> [!IMPORTANT]
+> Precisa de Docker e Docker Compose instalados
+
 ## Comandos para rodar
 
 - Docker compose
@@ -24,7 +27,10 @@ http://127.0.0.1:8000/gui/
 
 ## Comandos para o desenvolvimento
 
-- Setup (python version = 3.12.* )
+> [!IMPORTANT]
+> Precisa de Python versão 3.12.* instalado
+
+- Setup
 ``` shell
 pip install poetry
 ```
@@ -43,7 +49,7 @@ poetry install
   DATABASE_URL=postgresql+psycopg://{user}:{password}@{hostname}:{port}/{database-name}
 </details>
 
-- Database
+- Iniciar e configurar o Banco de Dados
 
 ``` shell
 docker-compose up -d fastzero_database
@@ -54,6 +60,12 @@ poetry run alembic upgrade head
 
 ``` shell
 task run
+```
+
+- Parar o banco de dados
+
+``` shell
+docker-compose down
 ```
 
 - Outros atalhos
