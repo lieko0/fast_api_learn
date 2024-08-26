@@ -32,9 +32,16 @@ pip install poetry
 - Ambiente virtual & Instalação de dependências
 
 ``` sh
+cd .\fast_api_learn\
 poetry shell
 poetry install
 ```
+
+- Criar arquivo de variáveis
+<details>
+  <summary>.env</summary>
+  DATABASE_URL=postgresql+psycopg://{user}:{password}@{hostname}:{port}/{database-name}
+</details>
 
 - Database
 
@@ -42,11 +49,7 @@ poetry install
 docker-compose up -d fastzero_database
 poetry run alembic upgrade head
 ```
-- Variáveis
-<details>
-  <summary>.env</summary>
-  DATABASE_URL=postgresql+psycopg://{user}:{password}@{hostname}:{port}/{database-name}
-</details>
+
 
 - Atalhos
 

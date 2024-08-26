@@ -1,4 +1,4 @@
-import logging
+# import logging
 
 from fastapi import Depends
 from nicegui import ui
@@ -8,9 +8,9 @@ from fast_zero.database import get_session
 from fast_zero.models import Cliente
 from fast_zero.routers import clientes
 
-logger = logging.getLogger('uvicorn.error')
-logger.setLevel(logging.DEBUG)
-# logger.debug({'debug-ui': clientes.read_clientes(session)})
+# logger = logging.getLogger('uvicorn.error')
+# logger.setLevel(logging.DEBUG)
+# # logger.debug({'debug-ui': clientes.read_clientes(session)})
 
 
 def table(session: Session = Depends(get_session)) -> None:
@@ -29,13 +29,13 @@ def table(session: Session = Depends(get_session)) -> None:
     # https://github.com/zauberzeug/nicegui/blob/main/examples/editable_table/main.py
 
     def update_table():
-        logger.debug({'debug-ui': clientes.read_clientes(session)})
+        # logger.debug({'debug-ui': clientes.read_clientes(session)})
         cliente_list = clientes.read_clientes(session)['clientes']
-        logger.debug({'debug-ui': cliente_list})
+        # logger.debug({'debug-ui': cliente_list})
         table_one.clear()
         for cliente in cliente_list:
             c: Cliente = cliente
-            logger.debug({'debug-ui': c})
+            # logger.debug({'debug-ui': c})
             table_one.add_rows({
                 'id': c.id,
                 'nome': c.nome,
