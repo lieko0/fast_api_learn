@@ -27,15 +27,14 @@ http://127.0.0.1:8000/gui/
 - Setup (python version = 3.12.* )
 ``` shell
 pip install poetry
-poetry install
 ```
 
-- Ambiente virtual
+- Ambiente virtual & Instalação de dependências
 
 ``` sh
 poetry shell
+poetry install
 ```
-
 
 - Database
 
