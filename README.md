@@ -20,6 +20,7 @@ http://127.0.0.1:8000/docs/
 http://127.0.0.1:8000/gui/
 ```
 
+<br>
 
 ## Comandos para o desenvolvimento
 
@@ -42,12 +43,11 @@ poetry shell
 docker-compose up -d fastzero_database
 poetry run alembic upgrade head
 ```
-
-```{toggle} 
-:show:
-.env
-DATABASE_URL=postgresql+psycopg://{user}:{password}@{hostname}:{port}/{database-name}
-```
+- Variáveis
+<details>
+  <summary>.env</summary>
+  DATABASE_URL=postgresql+psycopg://{user}:{password}@{hostname}:{port}/{database-name}
+</details>
 
 - Atalhos
 
