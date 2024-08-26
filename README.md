@@ -50,21 +50,26 @@ docker-compose up -d fastzero_database
 poetry run alembic upgrade head
 ```
 
-
-- Atalhos
+- Rodar a aplicação
 
 ``` shell
-task lint #= 'ruff check . && ruff check . --diff'
+task run
+```
 
-task format #= 'ruff check . --fix && ruff format .'
+- Outros atalhos
 
-task run #= 'fastapi dev fast_zero/app.py'
+``` shell
+task lint # Roda o lint e verifica problemas na formatação
 
-task pre_test #= 'task lint'
+task format # Formata (quase tudo) de acordo com o padrão e mostra o que precisa ser formatado na mão
 
-task test = #'pytest -s -x --cov=fast_zero -vv'
+task run # Roda a aplicação com o comando 'fastapi dev'
 
-task post_test #= 'coverage html'
+task pre_test # Verifica o lint antes de realizar os testes
+
+task test = # Roda todos os teste da API do backend pelo pytest
+
+task post_test # Apresenta o 'coverage html'
 ```
 
 
