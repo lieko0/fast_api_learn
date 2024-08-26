@@ -1,13 +1,10 @@
 from http import HTTPStatus
 
 from fastapi import FastAPI
-import uvicorn
 
 from fast_zero.routers import clientes
 from fast_zero.schemas import Message
-
 from front_nicegui import main
-
 
 app = FastAPI()
 
@@ -23,6 +20,7 @@ app = FastAPI()
 app.include_router(clientes.router)
 
 main.init(app)
+
 
 @app.get('/', status_code=HTTPStatus.OK, response_model=Message)
 def read_root():
