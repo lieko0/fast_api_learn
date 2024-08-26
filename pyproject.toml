@@ -7,12 +7,14 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "3.12.*"
-fastapi = "^0.111.0"
 pydantic = {extras = ["email"], version = "^2.8.2"}
 sqlalchemy = "^2.0.32"
 pydantic-settings = "^2.4.0"
 alembic = "^1.13.2"
 psycopg = {extras = ["binary"], version = "^3.2.1"}
+fastapi = {version = "0.109.1", extras = ["standart"]}
+fastapi-cli = "^0.0.5"
+nicegui = "^1.4.36"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.2"
@@ -26,6 +28,8 @@ testcontainers = "^4.8.0"
 lint = 'ruff check . && ruff check . --diff'
 format = 'ruff check . --fix && ruff format .'
 run = 'fastapi dev fast_zero/app.py'
+prodrun = 'poetry run uvicorn --host 0.0.0.0 --port 8000 fast_zero.app:app'
+devrun = 'poetry run uvicorn --reload --host 0.0.0.0 --port 8000 fast_zero.app:app'
 pre_test = 'task lint'
 test = 'pytest -s -x --cov=fast_zero -vv'
 post_test = 'coverage html'
