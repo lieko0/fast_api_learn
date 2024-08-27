@@ -13,19 +13,18 @@ from front_nicegui import table, theme
 def init(fastapi_app: FastAPI) -> None:
     @ui.page('/')
     def root():
-        with theme.frame('Homepage'):
+        with theme.frame(''):
             ...
 
     @ui.page('/home')
     def show():
-        with theme.frame('Homepage'):
-            ui.dark_mode().bind_value(app.storage.user, 'dark_mode')
-            ui.checkbox('dark mode').bind_value(app.storage.user, 'dark_mode')
+        with theme.frame('Home'):
+            ...
 
     @ui.page('/table')
     def tabela(session: Session = Depends(get_session)):
         ui.dark_mode().bind_value(app.storage.user, 'dark_mode')
-        with theme.frame('Homepage'):
+        with theme.frame('Tabela'):
             table.table(session)
 
     ui.run_with(
