@@ -14,11 +14,13 @@ docker-compose up --build
 ```
 
 - [Documentação da API](http://127.0.0.1:8000/docs/)
-``` 
+
+```
 http://127.0.0.1:8000/docs/
 ```  
 
-- [WIP] [Interface da API](http://127.0.0.1:8000/gui/) em [NiceGUI](https://nicegui.io/)
+- [WIP] [Interface da API](http://127.0.0.1:8000/gui/) em [NextJS (react)](https://nextjs.org/)
+
 ``` markdown
 http://127.0.0.1:8000/gui/
 ```
@@ -31,6 +33,7 @@ http://127.0.0.1:8000/gui/
 > Precisa de Python versão 3.12.* instalado
 
 - Setup
+
 ``` shell
 pip install poetry
 ```
@@ -44,6 +47,7 @@ poetry install
 ```
 
 - Criar arquivo de variáveis
+
 <details>
   <summary>.env</summary>
   DATABASE_URL=postgresql+psycopg://{user}:{password}@{hostname}:{port}/{database-name}
@@ -83,5 +87,3 @@ task test = # Roda todos os teste da API do backend pelo pytest
 
 task post_test # Apresenta o 'coverage html'
 ```
-
-

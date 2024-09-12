@@ -1,10 +1,10 @@
 from http import HTTPStatus
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from fast_zero.routers import clientes
 from fast_zero.schemas import Message
-from front_nicegui import main
 
 app = FastAPI()
 
@@ -17,9 +17,20 @@ app = FastAPI()
 # alembic revision --autogenerate -m "create cliente table"
 # alembic upgrade head
 
-app.include_router(clientes.router)
+origins = [
+    "http://localhost",
+    "http://localhost:3000",
+]
 
-main.init(app)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(clientes.router)
 
 
 @app.get('/', status_code=HTTPStatus.OK, response_model=Message)
